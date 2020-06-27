@@ -71,6 +71,10 @@ if __name__ == "__main__":
         plt.clf()
         plt.scatter(Xtest[0], Xtest[1], c=res)
         plt.scatter(X[0], X[1], c=[[1,0,0]]*reds + [[0,1,0]]*greens)
+
+        props = dict(boxstyle='round', facecolor='white', alpha=0.9)
+        plt.text(-0.95,0.95, f"epoch {(i+1)*100}\ncost = {round(nn.costs[-1],8)}", 
+            fontsize=8,verticalalignment='top', bbox=props)
         fig.canvas.draw()
 
     plt.show()
