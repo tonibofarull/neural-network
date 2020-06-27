@@ -26,12 +26,12 @@ def get_dots(name="array"):
     greens = len(green[0])
 
     Y = np.array([0]*reds + [1]*greens).reshape((1,-1))
-    pickle.dump((X,Y,reds,greens), open("data/" + name,"wb"))
+    pickle.dump((X,Y,reds,greens), open("../data/" + name,"wb"))
 
 def get_train(new_plot=True, name="array"):
     if new_plot:
         get_dots()
-    W = pickle.load(open("data/" + name,"rb"))
+    W = pickle.load(open("../data/" + name,"rb"))
     X, Y, reds, greens = W[0], W[1], W[2], W[3]
 
     plt.scatter(X[0], X[1], c=[[1,0,0]]*reds + [[0,1,0]]*greens)
