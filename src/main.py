@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 DRAW_PLOT = False
-NAME_FILE = "circle"
+NAME_FILE = "spiral"
 
 def get_dots(name="array"):
     plt.clf()
@@ -30,7 +30,7 @@ def get_dots(name="array"):
 
 def get_train(new_plot=True, name="array"):
     if new_plot:
-        get_dots()
+        get_dots(name)
     W = pickle.load(open("../data/" + name,"rb"))
     X, Y, reds, greens = W[0], W[1], W[2], W[3]
 
@@ -55,10 +55,9 @@ def get_contour(A, Y):
 
 if __name__ == "__main__":
 
-    X, Y, reds, greens = get_train(new_plot=DRAW_PLOT, name=NAME_FILE)
-
     nn = NN([2,8,8,1])
 
+    X, Y, reds, greens = get_train(new_plot=DRAW_PLOT, name=NAME_FILE)
     Xtest = get_test()
 
     fig = plt.figure()
