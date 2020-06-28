@@ -34,6 +34,8 @@ def get_train(new_plot=True, name="array"):
     W = pickle.load(open("../data/" + name,"rb"))
     X, Y, reds, greens = W[0], W[1], W[2], W[3]
 
+    print("Problem to classify")
+    print("Close figure to continue...")
     plt.scatter(X[0], X[1], c=[[1,0,0]]*reds + [[0,1,0]]*greens)
     plt.show()
     return X, Y, reds, greens
@@ -79,4 +81,6 @@ if __name__ == "__main__":
 
     plt.show()
     plt.plot(nn.costs)
+    plt.title("Cost Function")
+    plt.xlabel("epoch")
     plt.show()

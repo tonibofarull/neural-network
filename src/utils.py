@@ -1,29 +1,32 @@
 import numpy as np
 
-def sigmoid(x, forward=True):
+def sigmoid(ZA, forward=True):
     """
-    If forward -> compute sigmoid
-    Else -> compute derivate
-    """
-    if forward:
-        return 1/(1+np.exp(-x))
-    return x*(1-x)
-
-
-def relu(x, forward=True):
-    """
-    If forward -> compute sigmoid
-    Else -> compute derivate
+    If forward -> compute sigmoid from Z
+    Else -> compute derivate from A = g(Z)
     """
     if forward:
-        return np.maximum(0,x)
-    x[x <= 0] = 0
-    return x
+        return 1/(1+np.exp(-ZA))
+    return ZA*(1-ZA)
 
-def tanh(x, forward=True):
+
+def relu(ZA, forward=True):
+    """
+    If forward -> compute sigmoid from Z
+    Else -> compute derivate from A = g(Z)
+    """
     if forward:
-        # x = np.maximum(np.minimum(x,500), -500) # save overflow
-        ex = np.exp(x)
-        eminx = np.exp(-x)
-        return np.divide(ex-eminx, ex+eminx + 1e-8)
-    return 1-x*x
+        return np.maximum(0,ZA)
+    ZA[ZA <= 0] = 0
+    return ZA
+
+def tanh(ZA, forward=True):
+    """
+    If forward -> compute sigmoid from Z
+    Else -> compute derivate from A = g(Z)
+    """
+    if forward:
+        a = np.exp(ZA)
+        b = np.exp(-ZA)
+        return np.divide(a-b, a+b + 1e-8)
+    return 1-ZA*ZA
