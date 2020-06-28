@@ -9,17 +9,6 @@ def sigmoid(ZA, forward=True):
         return 1/(1+np.exp(-ZA))
     return ZA*(1-ZA)
 
-
-def relu(ZA, forward=True):
-    """
-    If forward -> compute sigmoid from Z
-    Else -> compute derivate from A = g(Z)
-    """
-    if forward:
-        return np.maximum(0,ZA)
-    ZA[ZA <= 0] = 0
-    return ZA
-
 def tanh(ZA, forward=True):
     """
     If forward -> compute sigmoid from Z
