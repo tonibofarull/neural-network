@@ -1,8 +1,8 @@
 import numpy as np
 
 """
-If forward -> compute sigmoid from Z
-Else -> compute derivate (from Z or A)
+If forward -> compute activation function from Z
+Else -> compute derivative (from Z or A)
 """
 
 eps = 1e-8
