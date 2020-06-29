@@ -1,10 +1,10 @@
-from nn import NN
+from NN import NN
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
 DRAW_PLOT = False
-NAME_FILE = "spiral"
+NAME_FILE = "flower"
 
 def get_dots(name="array"):
     plt.clf()
@@ -20,11 +20,10 @@ def get_dots(name="array"):
     xy[0] = red[0] + green[0]
     xy[1] = red[1] + green[1]
 
-    X = np.array([xy[0], xy[1]])
-
     reds = len(red[0])
     greens = len(green[0])
 
+    X = np.array([xy[0], xy[1]])
     Y = np.array([0]*reds + [1]*greens).reshape((1,-1))
     pickle.dump((X,Y,reds,greens), open("../data/" + name,"wb"))
 
@@ -55,8 +54,7 @@ def get_contour(A, Y):
         res.append([x,x,x])
     return res
 
-if __name__ == "__main__":
-
+def main():
     nn = NN([2,8,8,1])
 
     X, Y, reds, greens = get_train(new_plot=DRAW_PLOT, name=NAME_FILE)
@@ -84,3 +82,6 @@ if __name__ == "__main__":
     plt.title("Cost Function")
     plt.xlabel("epoch")
     plt.show()
+
+if __name__ == "__main__":
+    main()

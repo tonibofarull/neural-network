@@ -1,5 +1,5 @@
 import numpy as np
-from utils import sigmoid, tanh
+from activations import *
 import matplotlib.pyplot as plt
 
 np.random.seed(44)
@@ -29,11 +29,11 @@ class Layer():
 
         self.X = X
         self.Z = np.dot(self.W, X) + self.b
-        self.A = self.activation_func(self.Z)
+        self.A = self.activation_func(self.Z,)
         return self.A
 
     def back_propagation(self, dA, t):
-        dZ = dA * self.activation_func(self.A, forward=False)
+        dZ = dA * self.activation_func(self.Z, self.A, forward=False)
         # Gradient Descent + L2-regularization
         dW = 1/self.m * np.dot(dZ, self.X.T) + Layer.lambd/self.m * self.W
         db = 1/self.m * np.sum(dZ)
