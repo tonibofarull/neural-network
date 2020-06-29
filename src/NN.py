@@ -83,10 +83,10 @@ class NN():
         self._feed_forward(X)
         return self.layers[-1].get_A()
 
-    def train(self, X, Y, iters=100001, t=0):
+    def train(self, X, Y, iters=3000, t=0):
         self.m = Y.shape[1]
 
-        for i in range(1,iters):
+        for i in range(1,iters+1):
             i = i + t*iters
             A = self._feed_forward(X)
             cost, dA = self._cost(Y, A)

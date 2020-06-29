@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 DRAW_PLOT = False
-NAME_FILE = "flower"
+NAME_FILE = "circle"
 
 def get_dots(name="array"):
     plt.clf()
